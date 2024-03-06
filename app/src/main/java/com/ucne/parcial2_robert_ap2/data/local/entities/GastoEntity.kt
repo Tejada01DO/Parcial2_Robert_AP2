@@ -11,7 +11,7 @@ data class GastoEntity(
     val suplidor: String = "",
     val ncf: String = "",
     val concepto: String = "",
-    val descuento: String = "",
+    val descuento: Int = 0,
     val itbis: Int = 0,
     val monto: Int = 0
 )
