@@ -61,11 +61,11 @@ fun Nav(){
             composable(route = Screens.Home.name){
                 Home()
             }
-            composable(route = Screens.AddScreen.name){
-                //AddScreen()
+            composable(route = Screens.GastosScreen.name){
+                //GastosScreen()
             }
-            composable(route = Screens.Edit.name){
-                //C_Edit()
+            composable(route = Screens.C_Gastos.name){
+                //C_Gastos()
             }
         }
     }

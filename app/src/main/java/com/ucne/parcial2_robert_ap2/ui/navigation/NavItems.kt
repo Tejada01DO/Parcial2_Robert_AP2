@@ -19,13 +19,13 @@ val listOfNavItems = listOf(
         route = Screens.Home.name
     ),
     NavItems(
-        label = "Agregar",
+        label = "Gasto",
         icon = Icons.Default.Add,
-        route = Screens.AddScreen.name
+        route = Screens.GastosScreen.name
     ),
     NavItems(
         label = "Consulta",
         icon = Icons.Default.List,
-        route = Screens.Edit.name
+        route = Screens.C_Gastos.name
     )
 )
