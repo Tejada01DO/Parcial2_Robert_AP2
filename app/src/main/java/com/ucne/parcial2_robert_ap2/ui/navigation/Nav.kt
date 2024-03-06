@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.ucne.parcial2_robert_ap2.ui.home.Home
 
 @Composable
 fun Nav(){
@@ -58,7 +59,7 @@ fun Nav(){
                 .padding(paddingValues)
         ) {
             composable(route = Screens.Home.name){
-                //Home()
+                Home()
             }
             composable(route = Screens.AddScreen.name){
                 //AddScreen()
