@@ -16,6 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.ucne.parcial2_robert_ap2.ui.home.Home
+import com.ucne.parcial2_robert_ap2.ui.registro.GastosScreen
 
 @Composable
 fun Nav(){
@@ -62,7 +63,7 @@ fun Nav(){
                 Home()
             }
             composable(route = Screens.GastosScreen.name){
-                //GastosScreen()
+                GastosScreen()
             }
             composable(route = Screens.C_Gastos.name){
                 //C_Gastos()
