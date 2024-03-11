@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Refresh
@@ -29,6 +31,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 fun GastosScreen(
     viewModel: GastoViewModel = hiltViewModel()
 ) {
+    val stateVertical = rememberScrollState(0)
     val state by viewModel.state.collectAsStateWithLifecycle()
     val gasto = state.gasto
 
@@ -37,18 +40,28 @@ fun GastosScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
+                .verticalScroll(state = stateVertical),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = "Registro de Gastos",
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 16.dp)
             )
+
+            state.successMessage?.let {
+                Text(text = it)
+            }
+
+            state.error?.let{
+                Text(text = it)
+            }
 
             OutlinedTextField(
                 value = gasto.fecha,

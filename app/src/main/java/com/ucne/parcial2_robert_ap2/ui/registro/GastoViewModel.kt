@@ -19,8 +19,40 @@ class GastoViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     fun Guardar(){
+        val fecha = state.value.gasto.fecha
+        val suplidor = state.value.gasto.suplidor
+        val ncf = state.value.gasto.ncf
+        val concepto = state.value.gasto.concepto
+        val descuento = state.value.gasto.descuento
+        val itbis = state.value.gasto.itbis
+        val monto = state.value.gasto.monto
+
+        if(fecha.isEmpty() || suplidor.isEmpty() || ncf.isEmpty() || concepto.isEmpty() || descuento == 0 || itbis == 0 || monto == 0){
+            _state.update {
+                it.copy(error = "Todos los campos son requeridos")
+            }
+            return
+        }
+
         viewModelScope.launch {
-            gastoRepository.saveGasto(state.value.gasto)
+            try {
+                gastoRepository.saveGasto(state.value.gasto)
+                _state.update {
+                    it.copy(
+                        successMessage = "Se guardo correctamente",
+                        error = null,
+                        isLoading = false
+                    )
+                }
+            } catch (e: Exception){
+                _state.update {
+                    it.copy(
+                        error = "Ocurrio un error al guardar",
+                        successMessage = null,
+                        isLoading = false
+                    )
+                }
+            }
         }
     }
 
@@ -74,7 +106,12 @@ class GastoViewModel @Inject constructor(
 
             GastoEvent.onLimpiar -> {
                 _state.update {
-                    it.copy(gasto = GastoEntity())
+                    it.copy(
+                        gasto = GastoEntity(),
+                        successMessage = null,
+                        error = null,
+                        isLoading = false
+                    )
                 }
             }
         }
@@ -83,8 +120,8 @@ class GastoViewModel @Inject constructor(
 
 data class GastoState(
     val isLoading: Boolean = false,
-    val error: String = "",
-    val successMessage: String = "",
+    val error: String? = "",
+    val successMessage: String? = "",
     val gasto: GastoEntity = GastoEntity()
 )
 
