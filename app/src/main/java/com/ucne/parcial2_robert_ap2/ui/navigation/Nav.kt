@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.ucne.parcial2_robert_ap2.ui.consulta.C_Gastos
 import com.ucne.parcial2_robert_ap2.ui.home.Home
 import com.ucne.parcial2_robert_ap2.ui.registro.GastosScreen
 
@@ -66,7 +67,7 @@ fun Nav(){
                 GastosScreen()
             }
             composable(route = Screens.C_Gastos.name){
-                //C_Gastos()
+                C_Gastos()
             }
         }
     }

@@ -16,7 +16,7 @@ class GastoRepository @Inject constructor(
         gastoDao.Eliminar(gasto)
     }
 
-    suspend fun getAll(): Flow<List<GastoEntity>> {
+    fun getAll(): Flow<List<GastoEntity>> {
         return gastoDao.ObtenerTodos()
     }
 }

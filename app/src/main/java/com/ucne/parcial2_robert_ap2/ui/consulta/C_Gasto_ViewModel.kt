@@ -2,10 +2,10 @@ package com.ucne.parcial2_robert_ap2.ui.consulta
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ucne.parcial2_robert_ap2.data.local.entities.GastoEntity
 import com.ucne.parcial2_robert_ap2.data.repository.GastoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -18,6 +18,7 @@ class C_Gasto_ViewModel @Inject constructor(
 
     private val _state = MutableStateFlow(GastoListState())
     val state = _state.asStateFlow()
+    val gastos: Flow<List<GastoEntity>> = gastoRepository.getAll()
 
     init {
         getGastos()
