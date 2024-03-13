@@ -51,6 +51,8 @@ fun C_Gastos(
         LazyColumn{
             items(gastos){gasto ->
                 Card(gasto = gasto, onDelete = {viewModel.onEvent(C_Gasto_Event.onDelete(gasto))} )
+                Spacer(modifier = Modifier.height(8.dp))
+
             }
         }
     }
