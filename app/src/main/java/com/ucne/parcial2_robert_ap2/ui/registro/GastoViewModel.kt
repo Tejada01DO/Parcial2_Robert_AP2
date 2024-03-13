@@ -102,6 +102,7 @@ class GastoViewModel @Inject constructor(
 
             GastoEvent.onSave -> {
                 Guardar()
+                onEvent(GastoEvent.onLimpiar)
             }
 
             GastoEvent.onLimpiar -> {
