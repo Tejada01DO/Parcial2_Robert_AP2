@@ -41,7 +41,8 @@ class GastoViewModel @Inject constructor(
                     it.copy(
                         successMessage = "Se guardo correctamente",
                         error = null,
-                        isLoading = false
+                        isLoading = false,
+                        gasto = GastoEntity()
                     )
                 }
             } catch (e: Exception){
@@ -102,7 +103,6 @@ class GastoViewModel @Inject constructor(
 
             GastoEvent.onSave -> {
                 Guardar()
-                onEvent(GastoEvent.onLimpiar)
             }
 
             GastoEvent.onLimpiar -> {
